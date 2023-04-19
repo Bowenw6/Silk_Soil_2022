@@ -1,6 +1,6 @@
 
 
-#Figure S4
+#Figure S3
 raw_data <- read.table("16S_pathway.L2.txt",header = TRUE,row.names = 1,sep = "\t")
 group <- read.table("group.txt",header = FALSE,sep = "\t")
 
