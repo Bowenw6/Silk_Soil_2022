@@ -2,7 +2,7 @@
 
 
 
-######  The manuscript is currently under review  ######
+######  The manuscript has been accepted by [i]Science of the total environment[i]   ######
 
 
 
