@@ -1,4 +1,4 @@
-# This repository is the code for the artical entitled ***"Dynamics of microbial community composition during degradation of silks in burial environment"*** in ***"Science of The Total Environment"***
+# This repository contains the code for the artical entitled ***"Dynamics of microbial community composition during degradation of silks in burial environment"*** in ***"Science of The Total Environment"***
 
 ## If you used any codes in your research from this repository, please cite this article:
 Bowen Wang, Chengshuai Zhu, Yulan Hu, Bingjian Zhang, Jianlan Wang.
