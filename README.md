@@ -9,8 +9,8 @@ Science of The Total Environment,
 ISSN 0048-9697,
 https://doi.org/10.1016/j.scitotenv.2023.163694.
  
+ ![image](https://github.com/Bowenw6/Silk_Soil_2022/blob/main/img/img2.png)
  
- ![image](https://github.com/Bowenw6/Silk_Soil_2022/blob/main/img/img1.jpg)
  
  
  
