@@ -1,13 +1,8 @@
 # This repository contains the code for the artical entitled ***"Dynamics of microbial community composition during degradation of silks in burial environment"*** in ***"Science of The Total Environment"***
 
 ## If you used any codes in your research from this repository, please cite this article:
-Bowen Wang, Chengshuai Zhu, Yulan Hu, Bingjian Zhang, Jianlan Wang.
-Dynamics of microbial community composition during degradation of silks in burial environment,
-Science of The Total Environment,
-2023,
-163694,
-ISSN 0048-9697,
-https://doi.org/10.1016/j.scitotenv.2023.163694.
+
+Bowen Wang, Chengshuai Zhu, Yulan Hu, Bingjian Zhang, Jianlan Wang. Dynamics of microbial community composition during degradation of silks in burial environment. Science of The Total Environment. 2023, 883:163694, ISSN 0048-9697, https://doi.org/10.1016/j.scitotenv.2023.163694
  
  ![image](https://github.com/Bowenw6/Silk_Soil_2022/blob/main/img/img2.png)
  
