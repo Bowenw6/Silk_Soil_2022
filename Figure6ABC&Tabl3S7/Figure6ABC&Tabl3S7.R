@@ -117,12 +117,12 @@ diff_result_ITS<- cbind(reorderd_tt_enrich,Taxonomy_ITS)
 diff_result_ITS$threshold<- ifelse(diff_result_ITS$logFC>=0&diff_result_ITS$FDR<=0.05,"Enriched on silk",
                                    ifelse(diff_result_ITS$logFC<0&diff_result_ITS$FDR<=0.05,
                                           "Depleted on silk","Not significant"))
-write.csv(diff_result_ITS,'diff_result_ITS.csv', quote = FALSE)#把主要结果输出为文件
+write.csv(diff_result_ITS,'diff_result_ITS.csv', quote = FALSE)
 
 
 
 #Radar plot
-diff_result_ITS<-read.csv("diff_result_ITS.csv", row.names = 1,na.strings = "") #此处加na.strings = ""是为了把表格中空值替换为NA
+diff_result_ITS<-read.csv("diff_result_ITS.csv", row.names = 1,na.strings = "") 
 radar_data<- diff_result_ITS[,c("logCPM","threshold","Phylum")]
 radar_data$logCPM<- 2^radar_data$logCPM
 names(radar_data)[1]<-"CPM"
@@ -148,7 +148,7 @@ colnames(Depleted_radar_plot)<-c("Phylum", "CPM")
 
 Radar_plot<-merge(Enriched_radar_plot,Depleted_radar_plot, by="Phylum",all.x = T, all.y = T)
 colnames(Radar_plot)<-c("Phylum","Enriched on silk", "Depleted on silk")
-Radar_plot[is.na(Radar_plot)]<-1 #把无表达量的换成1，下一步取log2之后就变成了0
+Radar_plot[is.na(Radar_plot)]<-1 
 
 
 Radar_plot$`Enriched on silk`<-log2(Radar_plot$`Enriched on silk`)
@@ -162,7 +162,7 @@ rownames(Radar_plot)<-Radar_plot[,1]
 Radar_plot<-Radar_plot[,2:5]
 Radar_plot<-Radar_plot[,c(3,4,1,2)]
 library(dplyr)
-Radar_plot<-Radar_plot[order(-Radar_plot$`Enriched on silk`),] #按Enriched on silk倒序排序为了画图美观
+Radar_plot<-Radar_plot[order(-Radar_plot$`Enriched on silk`),] 
 Radar_plot<-t(Radar_plot)
 Radar_plot<-as.data.frame(Radar_plot)
 
@@ -189,7 +189,7 @@ legend(x=-0.2, y=-0.2, legend = rownames(Radar_plot[-c(2,1),]), bty = "n", pch=2
 
 
 #Manhattan plot
-diff_result_ITS<-read.csv("diff_result_ITS.csv", row.names = 1,na.strings = "") #此处加na.strings = ""是为了把表格中空值替换为NA
+diff_result_ITS<-read.csv("diff_result_ITS.csv", row.names = 1,na.strings = "") 
 Manhattan_data<- diff_result_ITS[,c("logCPM","FDR","threshold","Phylum")]
 
 Manhattan_data[is.na(Manhattan_data)]<- "Unknown"
@@ -203,9 +203,9 @@ Man_top_phylum=c("Ascomycota","Mortierellomycota","Basidiomycota","Chytridiomyco
 Manhattan_data[!(Manhattan_data$Phylum %in% Man_top_phylum),]$Phylum = "Low Abundance"
 
 
-Manhattan_data<-Manhattan_data[order(Manhattan_data$`Phylum`),] #按Phylum排序为了画图美观
+Manhattan_data<-Manhattan_data[order(Manhattan_data$`Phylum`),] 
 
-FDR_line <- min(Manhattan_data$neglog10FDR[Manhattan_data$threshold=="Depleted on silk"]) #FDR阈值线
+FDR_line <- min(Manhattan_data$neglog10FDR[Manhattan_data$threshold=="Depleted on silk"]) 
 library(ggplot2)
 
 basic_theme <- theme(panel.background = element_blank(),
