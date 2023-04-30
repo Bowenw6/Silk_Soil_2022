@@ -433,7 +433,7 @@ Summarise_Soil_null_mat<- Soil_null_mat %>% group_by(assembly) %>% summarise(n =
 Summarise_Soil_null_mat<-as.data.frame(t(Summarise_Soil_null_mat))
 Summarise_Soil_null_mat$V5<-c("Hetro Selection", 0)
 Summarise_Soil_null_mat<-as.data.frame(t(Summarise_Soil_null_mat))
-Summarise_Soil_null_mat<-Summarise_Soil_null_mat[order(Summarise_Soil_null_mat[,1]),] #重新排序
+Summarise_Soil_null_mat<-Summarise_Soil_null_mat[order(Summarise_Soil_null_mat[,1]),] 
 Summarise_Soil_null_mat$n<-as.numeric(Summarise_Soil_null_mat$n)
 
 
