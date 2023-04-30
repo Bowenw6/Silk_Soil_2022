@@ -101,7 +101,7 @@ p4<- ggplot(sum_beta_nti, aes(Group, betaNTI)) +
 
 p4
 
-#save image 4inchs*3inchs
+#save image 4inches*3inches
 
 
 #RCbray plot
@@ -120,7 +120,7 @@ p5<- ggplot(sum_raup_crick, aes(Group, RCbray)) +
   theme(legend.position="none") 
 
 p5
-#save image 4inchs*3inchs
+#save image 4inches*3inches
 
 
 #Merge two pics 
