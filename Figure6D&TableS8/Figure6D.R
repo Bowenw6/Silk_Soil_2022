@@ -29,7 +29,7 @@ bar_ITS$names<-as.factor(bar_ITS$names)
 bar_ITS$phylum_name<-as.factor(bar_ITS$number_log_CPM)
 
 p1<-p + 
-  geom_fruit(data=bar_ITS, geom=geom_bar, mapping=aes(y=names, x=number_log_CPM, fill=c("white")), orientation="y", #不fill
+  geom_fruit(data=bar_ITS, geom=geom_bar, mapping=aes(y=names, x=number_log_CPM, fill=c("white")), orientation="y", 
              stat="identity", axis.params = NA) + 
   scale_fill_manual(values=c("white"))+ 
   new_scale_fill()+ 
