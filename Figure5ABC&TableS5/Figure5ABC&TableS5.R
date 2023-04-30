@@ -15,10 +15,10 @@ model_mat_enrich <- model.matrix(~Group, data=design)
 #Dispersion
 dge_enrich <- estimateGLMRobustDisp(edgeR_enrich, design=model_mat_enrich)
 
-fit_enrich <- glmFit(dge_enrich, design=model_mat_enrich) #拟合模型
-lrt_enrich <- glmLRT(fit_enrich, coef=2) ##likelihood ratio tests (LRT)统计检验
-tt_enrich<- topTags(lrt_enrich, n=Inf, p.value=1) #查看并存储差异最显著的基因或物种 
-write.csv(topTags(lrt_enrich, n=Inf, p.value=1),'16S_Silk_VS_Soil_glmLRT.csv', quote = FALSE)#把主要结果输出为文件
+fit_enrich <- glmFit(dge_enrich, design=model_mat_enrich) 
+lrt_enrich <- glmLRT(fit_enrich, coef=2) 
+tt_enrich<- topTags(lrt_enrich, n=Inf, p.value=1) 
+write.csv(topTags(lrt_enrich, n=Inf, p.value=1),'16S_Silk_VS_Soil_glmLRT.csv', quote = FALSE)
 
 ### FDR<=0.05
 tt_enrich<- as.data.frame(tt_enrich)
@@ -33,13 +33,13 @@ colnames(plotdata) <- c("CPM", "logFC", "threshold")
 
 p1<- ggplot(plotdata,aes(x=logFC,y=CPM,color=threshold))+
   geom_point()+
-  scale_color_manual(values=c("#F4B800","#55AFFF","gray"))+#确定点的颜色
-  theme_bw()+#修改图片背景
-  theme(axis.line.x=element_line(linetype=1,color="black",size=0.5))+ #加X轴
-  theme(axis.line.y=element_line(linetype=1,color="black",size=0.5))+ #加Y轴
- theme(legend.title = element_blank(), panel.border = element_blank())+ #不显示图例标题,去掉边框
-  ylab('Log2 (count per million)')+#修改y轴名称
-  xlab('Log2 (fold change)')+#修改x轴名称
+  scale_color_manual(values=c("#F4B800","#55AFFF","gray"))+
+  theme_bw()+
+  theme(axis.line.x=element_line(linetype=1,color="black",size=0.5))+ 
+  theme(axis.line.y=element_line(linetype=1,color="black",size=0.5))+ 
+ theme(legend.title = element_blank(), panel.border = element_blank())+ 
+  ylab('Log2 (count per million)')+
+  xlab('Log2 (fold change)')+
   coord_cartesian(ylim = c(0,4800)) 
 
 
@@ -51,7 +51,7 @@ p2<- ggplot(plotdata,aes(x=logFC,y=CPM,color=threshold))+
   theme(legend.title = element_blank(),panel.border = element_blank())+ 
   ylab('')+
   xlab('')+
-  theme(axis.line.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank()) +#去掉X轴、X轴刻度和X轴的文字
+  theme(axis.line.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
   coord_cartesian(ylim = c(10000,20000)) +  
   scale_y_continuous(breaks = c(10000,20000,10000)) +
 theme(legend.position="none") 
@@ -130,7 +130,7 @@ write.csv(diff_result_16S,'diff_result_16S.csv', quote = FALSE)
 
 
 #Radar plot Figure 5B
-diff_result_16S<-read.csv("diff_result_16S.csv", row.names = 1,na.strings = "") #此处加na.strings = ""是为了把表格中空值替换为NA
+diff_result_16S<-read.csv("diff_result_16S.csv", row.names = 1,na.strings = "") 
 radar_data<- diff_result_16S[,c("logCPM","threshold","Phylum")]
 #turn logCPM into CPM
 radar_data$logCPM<- 2^radar_data$logCPM
@@ -171,7 +171,7 @@ rownames(Radar_plot)<-Radar_plot[,1]
 Radar_plot<-Radar_plot[,2:5]
 Radar_plot<-Radar_plot[,c(3,4,1,2)]
 library(dplyr)
-Radar_plot<-Radar_plot[order(-Radar_plot$`Enriched on silk`),] #按Enriched on silk倒序排序为了画图美观
+Radar_plot<-Radar_plot[order(-Radar_plot$`Enriched on silk`),] 
 Radar_plot<-t(Radar_plot)
 Radar_plot<-as.data.frame(Radar_plot)
 
@@ -213,9 +213,9 @@ Manhattan_data[!(Manhattan_data$Phylum %in% Man_top_phylum),]$Phylum = "Low Abun
 
 Manhattan_data[Manhattan_data$neglog10FDR>20,]$neglog10FDR  = 20
 
-Manhattan_data<-Manhattan_data[order(Manhattan_data$`Phylum`),] #按Phylum排序为了画图美观
+Manhattan_data<-Manhattan_data[order(Manhattan_data$`Phylum`),] 
 #plot 
-FDR_line <- min(Manhattan_data$neglog10FDR[Manhattan_data$threshold=="Depleted on silk"]) #FDR阈值线
+FDR_line <- min(Manhattan_data$neglog10FDR[Manhattan_data$threshold=="Depleted on silk"]) 
 library(ggplot2)
 
 basic_theme <- theme(panel.background = element_blank(),
