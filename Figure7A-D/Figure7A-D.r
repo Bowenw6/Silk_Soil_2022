@@ -42,7 +42,7 @@ Soil_16S_DOC_results <- DOC(ASV_Soil_16S, R = 1000)
 #The P-value was calculated as the fraction of bootstrap runs (n_boot=1000) resulting with non-negative slopes.
 soil_p_value<-(sum(Soil_16S_DOC_results$LME$Slope >= 0) + 1) / (length(Soil_16S_DOC_results$LME$Slope) + 1)
 p2<-plot(Soil_16S_DOC_results) + theme_bw() +geom_text(aes(x = 0.85,y = 0.95,
-                                                       label = paste("Soil-Prokaryotes", '\n', "P=", round(soil_p_value, 4)))) #调节x和y调节字体位置
+                                                       label = paste("Soil-Prokaryotes", '\n', "P=", round(soil_p_value, 4)))) 
 p2
 #save as pdf 4inches*4inches
 
