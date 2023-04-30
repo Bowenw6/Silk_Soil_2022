@@ -11,12 +11,6 @@ library(stats4)
 
 spp<-read.csv('all_ITS.txt',head=T,stringsAsFactors=F,row.names=1,sep = "\t")
 
-#画Silk组的图
-#spp<-spp[,1:15]
-
-#画Soil组的图
-#spp<-spp[,16:30]
-
 
 spp<-t(spp)
 
@@ -47,24 +41,15 @@ Rsqr
 
 
 write.csv(p, file = "p.csv")
-#write.csv(p, file = "Silk_p.csv")   #导出丝绸组数据改用这个
-#write.csv(p, file = "Soil_p.csv")    #导出土壤组数据改用这个
-
 write.csv(freq, file = "freq.csv")
-#write.csv(freq, file = "Silk_freq.csv")
-#write.csv(freq, file = "Soil_freq.csv")
-
 write.csv(freq.pred, file = "freq.pred.csv")
-#write.csv(freq.pred, file = "Silk_freq.pred.csv")
-#write.csv(freq.pred, file = "Soil_freq.pred.csv")
-
 
 
 #plot
 bacnlsALL <-data.frame(p,freq,freq.pred,pred.ci[,2:3])
 inter.col<-rep('lightgray',nrow(bacnlsALL))
-inter.col[bacnlsALL$freq <= bacnlsALL$Lower]<-'#B3DE69'#出现频率低于中性群落模型预测的部分
-inter.col[bacnlsALL$freq >= bacnlsALL$Upper]<-'#FB8072'#出现频率高于中性群落模型预测的部分
+inter.col[bacnlsALL$freq <= bacnlsALL$Lower]<-'#B3DE69'
+inter.col[bacnlsALL$freq >= bacnlsALL$Upper]<-'#FB8072'
 library(grid)
 grid.newpage()
 pushViewport(viewport(h=0.6,w=0.6))
@@ -82,22 +67,11 @@ grid.text(x=unit(0,'npc')-unit(3,'lines'),label='Frequency of Occurance',gp=gpar
 
 draw.text <- function(just, i, j) {
   grid.text(paste("Rsqr=",round(Rsqr,3),"\n","Nm=",round(coef(m.fit)*N)), x=x[j], y=y[i], just=just)
-  #grid.text(deparse(substitute(just)), x=x[j], y=y[i] + unit(2, "lines"),
-  #          gp=gpar(col="grey", fontsize=8))
 }
 x <- unit(1:4/5, "npc")
 y <- unit(1:4/5, "npc")
 draw.text(c("centre", "bottom"), 4, 1)
 
-#Silk组加这个标题
-#grid.text(y=unit(1.3,'npc')-unit(2.5,'lines'),label='Silk', gp=gpar(fontface=2)) 
-#Soil组加这个标题
-#grid.text(y=unit(1.3,'npc')-unit(2.5,'lines'),label='Soil', gp=gpar(fontface=2)) 
-
-
-#save image 4*7inches
-
-#all samples save image 5*5 inches
 
 
 rm(list=ls())
