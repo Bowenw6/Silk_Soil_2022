@@ -57,7 +57,7 @@ p1 <- ggplot(abun.bar,aes(variable,Mean,fill = Group)) +
           legend.title=element_blank(),
           legend.text=element_text(size=12,face = "bold",colour = "black",
                                    margin = margin(r = 20)),
-         legend.position = c(-0.22,-0.13), #调整左下角图例的位置，数值一般在0-1之间
+         legend.position = c(-0.22,-0.13), 
           legend.direction = "horizontal",
           legend.key.width = unit(0.4,"cm"),
           legend.key.height = unit(0.25,"cm"))
