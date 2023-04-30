@@ -391,7 +391,7 @@ p1<-ggplot(beta_nti_lm_plot %>% na.omit()) +
   
   scale_colour_manual(values = c("Silk" = "#55AFFF",
                                  "Soil"="#F4B800"
-                                 ))+#修改颜色
+                                 ))+
   theme(panel.background = element_rect(fill='white', colour='black'),
         panel.grid=element_blank())+ 
   theme_bw()+
